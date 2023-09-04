@@ -59,6 +59,12 @@
             @endforeach
         </tbody>
     </table>
+    <div>
+        @if ($videogames->hasPages())
+            {{ $videogames->links() }}
+        @endif
+    </div>
+
     <div class="d-flex justify-content-end my-2">
         <a class="btn btn-dark" href="{{ route('admin.videogames.trash') }}">Trash</a>
     </div>
