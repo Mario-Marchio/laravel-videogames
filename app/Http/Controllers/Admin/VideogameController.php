@@ -89,4 +89,20 @@ class VideogameController extends Controller
 
         return redirect()->route('admin.videogames.index')->with('success', 'Videogame deleted successfully!');
     }
+
+    public function trash()
+    {
+        $videogames = Videogame::onlyTrashed()->get();
+
+        return view('admin.videogames.trash', compact('videogames'));
+    }
+
+    public function restore(string $id)
+    {
+        $videogame = Videogame::onlyTrashed()->findOrFail($id);
+
+        $videogame->restore();
+
+        return to_route('admin.videogames.trash')->with('success', 'Videogame restored successfully!');
+    }
 }
