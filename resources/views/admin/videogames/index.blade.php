@@ -24,6 +24,7 @@
                             <a class="btn btn-success" href="{{ route('admin.videogames.show', $videogame) }}">Details</a>
                             <a class="btn btn-warning mx-3" href="{{ route('admin.videogames.edit', $videogame) }}">Edit</a>
                             <!-- Button trigger modal -->
+
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                 data-bs-target="#modal-{{ $videogame->id }}">
                                 Delete
@@ -44,7 +45,13 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-danger">Confirm delete</button>
+                                <form action="{{ route('admin.videogames.destroy', $videogame) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Confirm delete
+                                        {{ $videogame->title }}</button>
+                                </form>
+
                             </div>
                         </div>
                     </div>
