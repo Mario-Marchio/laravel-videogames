@@ -40,7 +40,7 @@ class VideogameController extends Controller
 
         $videogame = Videogame::create($validatedData);
 
-        return Redirect()->route('admin.videogames.show', ['videogame' => $videogame]);
+        return Redirect()->route('admin.videogames.show', ['videogame' => $videogame])->with('success', 'Videogame created successfully!');
     }
 
     /**
@@ -73,7 +73,7 @@ class VideogameController extends Controller
 
         $videogame->update($validatedData);
 
-        return Redirect()->route('admin.videogames.show', ['videogame' => $videogame]);
+        return Redirect()->route('admin.videogames.show', ['videogame' => $videogame])->with('success', 'Videogame updated successfully!');
     }
 
     /**
@@ -83,7 +83,7 @@ class VideogameController extends Controller
     {
         $videogame->delete();
 
-        return redirect()->route('admin.videogames.index')->with('success', 'Videogame eliminato con successo!');
+        return redirect()->route('admin.videogames.index')->with('success', 'Videogame deleted successfully!');
     }
 
     public function trash()
