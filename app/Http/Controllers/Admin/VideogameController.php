@@ -40,7 +40,11 @@ class VideogameController extends Controller
 
         $videogame = Videogame::create($validatedData);
 
-        return Redirect()->route('admin.videogames.show', ['videogame' => $videogame])->with('success', 'Videogame created successfully!');
+        if ($videogame) {
+            return redirect()->route('admin.videogames.show', ['videogame' => $videogame])->with('success', 'Videogame created successfully!');
+        } else {
+            return back()->withErrors('error')->withInput();
+        }
     }
 
     /**
