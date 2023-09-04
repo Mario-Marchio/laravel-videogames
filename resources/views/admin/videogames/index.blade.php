@@ -59,4 +59,7 @@
             @endforeach
         </tbody>
     </table>
+    <div class="d-flex justify-content-end my-2">
+        <a class="btn btn-dark" href="{{ route('admin.videogames.trash') }}">Trash</a>
+    </div>
 @endsection
