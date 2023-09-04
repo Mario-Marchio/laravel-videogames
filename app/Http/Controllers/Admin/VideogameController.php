@@ -69,7 +69,7 @@ class VideogameController extends Controller
             'title' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'release_year' => 'nullable|date',
-            'rate' => 'nullable|numeric|between:0,10',
+            'rate' => 'nullable|numeric|between:0,5',
         ]);
 
         $videogame->update($validatedData);
