@@ -1,8 +1,8 @@
 @extends ('layouts.app')
 
 @section('content')
-<h1>EDIT</h1>
-    <form action="{{route('admins.videogames.update')}}" method="POST">
+<h1>Edit {{$videogame->title}}</h1>
+    <form action="{{route('admin.videogames.update', $videogame)}}" method="POST">
         @method('PUT')
         @include('admin.videogames.form')
     </form>
