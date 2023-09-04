@@ -22,7 +22,9 @@ use Illuminate\Support\Facades\Route;
 // Rotte admin
 Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+    Route::get('/videogames/trash', [AdminVideogameController::class, 'trash'])->name('videogames.trash');
     Route::resource('videogames', AdminVideogameController::class);
+    Route::put('/videogames/{videogame}/restore', [AdminVideogameController::class, 'restore'])->name('videogames.restore');
 });
 
 // Rotte guest
