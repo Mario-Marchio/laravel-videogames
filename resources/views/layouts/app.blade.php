@@ -26,7 +26,7 @@
         {{-- Navbar --}}
         @include('includes.layout.navbar')
 
-        <main class="">
+        <main class="container">
             @yield('content')
         </main>
     </div>

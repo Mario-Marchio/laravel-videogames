@@ -13,7 +13,8 @@ class VideogameController extends Controller
      */
     public function index()
     {
-        return view('admin.videogames.index');
+        $videogames = Videogame::all();
+        return view('admin.videogames.index', compact('videogames'));
     }
 
     /**
@@ -21,7 +22,8 @@ class VideogameController extends Controller
      */
     public function create()
     {
-        //
+        $videogame = new Videogame();
+        return view('admin.videogames.create', compact('videogame'));
     }
 
     /**
@@ -29,7 +31,16 @@ class VideogameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'release_year' => 'nullable|date',
+            'rate' => 'nullable|numeric|between:0,5',
+        ]);
+
+        $videogame = Videogame::create($validatedData);
+
+        return Redirect()->route('admin.videogames.show', ['videogame' => $videogame]);
     }
 
     /**
@@ -37,7 +48,7 @@ class VideogameController extends Controller
      */
     public function show(Videogame $videogame)
     {
-        //
+        return view('admin.videogames.show', compact('videogame'));
     }
 
     /**
@@ -45,7 +56,7 @@ class VideogameController extends Controller
      */
     public function edit(Videogame $videogame)
     {
-        //
+        return view('admin.videogames.edit', compact('videogame'));
     }
 
     /**
@@ -53,7 +64,16 @@ class VideogameController extends Controller
      */
     public function update(Request $request, Videogame $videogame)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'release_year' => 'nullable|date',
+            'rate' => 'nullable|numeric|between:0,10',
+        ]);
+
+        $videogame->update($validatedData);
+
+        return Redirect()->route('admin.videogames.show', ['videogame' => $videogame]);
     }
 
     /**
@@ -61,6 +81,8 @@ class VideogameController extends Controller
      */
     public function destroy(Videogame $videogame)
     {
-        //
+        $videogame->delete();
+
+        return redirect()->route('admin.videogames.index')->with('success', 'Videogame eliminato con successo!');
     }
 }
