@@ -9,5 +9,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Videogame extends Model
 {
     use HasFactory;
-    use SoftDeletes
+    use SoftDeletes;
 }
