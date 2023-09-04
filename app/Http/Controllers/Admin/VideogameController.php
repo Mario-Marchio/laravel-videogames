@@ -99,6 +99,6 @@ class VideogameController extends Controller
 
         $videogame->restore();
 
-        return to_route('admin.videogames.trash');
+        return to_route('admin.videogames.trash')->with('success', 'Videogame restored successfully!');
     }
 }
