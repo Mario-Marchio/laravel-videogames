@@ -1,0 +1,14 @@
+@use 'utils/mixin' as *;
+
+.logo{
+    @include flex();
+    gap: 5px;
+    img{
+        width: 50px;
+        filter: invert(1);
+    }
+    h5{
+        margin: 0;
+        text-transform: uppercase;
+    }
+}
