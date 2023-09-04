@@ -3,7 +3,6 @@
         <a class="navbar-brand d-flex align-items-center" href="{{ route('guest.home') }}">
             <div class="logo">
                 <img class="img-fluid" src="{{ asset('img/icon.png') }}" alt="icon">
-                <h5>{{ config('app.name', 'Videogames') }}</h5>
             </div>
         </a>
 
