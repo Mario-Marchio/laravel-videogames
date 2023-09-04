@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+  <div class="d-flex justify-content-end mt-3">
+    <a class="btn btn-success" href="{{ route('admin.videogames.create') }}">New Videogame</a>
+  </div>
   <table class="table mt-3">
     <thead>
       <tr>
@@ -17,13 +20,13 @@
           <td>{{ $videogame->created_at }}</td>
           <td>{{ $videogame->updated_at }}</td>
           <td>
-            <div class="d-flex">
-              <a class="btn btn-success" href="{{ route('admin.videogames.show', $videogame) }}">Dettagli</a>
-              <a class="btn btn-warning mx-3" href="{{ route('admin.videogames.edit', $videogame) }}">Modifica</a>
-              <form action="#" method="POST">
+            <div class="d-flex justify-content-end">
+              <a class="btn btn-success" href="{{ route('admin.videogames.show', $videogame) }}">Details</a>
+              <a class="btn btn-warning mx-3" href="{{ route('admin.videogames.edit', $videogame) }}">Edit</a>
+              <form action="{{ route('admin.videogames.destroy', $videogame) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger">Cancella</button>
+                <button class="btn btn-danger">Delete</button>
               </form>
             </div>
           </td>
