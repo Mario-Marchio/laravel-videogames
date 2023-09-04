@@ -31,6 +31,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
 Route::get('/', [GuestHomeController::class, 'index'])->name('guest.home');
 Route::prefix('/guest')->name('guest.')->group(function () {
     Route::get('/', [GuestVideogameController::class, 'index'])->name('videogames.index');
+    Route::get('/videogames/{videogame}', [GuestVideogameController::class, 'show'])->name('videogames.show');
 });
 
 Route::middleware('auth')->group(function () {

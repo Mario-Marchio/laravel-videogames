@@ -1,0 +1,27 @@
+@use '../../utils/mixin' as *;
+@use '../../utils/vars' as *;
+
+//______________________ GUEST_VIDEOGAME
+// INDEX
+#guest-videogame-list{
+    h1{
+        @include font(500, white, uppercase);
+        display: inline-block;
+        margin: 30px 0 10px 0;
+        padding: 10px 40px;
+        background-color: $primary-color;
+    }
+
+    h5{
+        @include font(500, black, uppercase);
+        text-align: center;
+    }
+    
+    .card{
+        transition: all 0.3s;
+    }
+
+    .card:hover{
+        box-shadow: 0 0 5px black;
+    }
+}

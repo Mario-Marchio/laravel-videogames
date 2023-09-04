@@ -1,0 +1,13 @@
+@use '../../utils/mixin' as *;
+@use '../../utils/vars' as *;
+
+//______________________ GUEST_VIDEOGAME
+// SHOW
+#guest-videogame-list{
+    .go-back{
+        @include font(500, white);
+        padding: 10px;
+        border-radius: 15px;
+        background-color: $primary-color;
+    }
+}
