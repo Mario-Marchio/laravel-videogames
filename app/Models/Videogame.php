@@ -10,4 +10,6 @@ class Videogame extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $fillable = ['title', 'image', 'release_year', 'rate'];
 }
