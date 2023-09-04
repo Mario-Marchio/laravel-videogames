@@ -1,4 +1,4 @@
-<nav class="navbar bg-dark border-bottom border-body navbar-expand-md" data-bs-theme="dark">
+<nav class="navbar bg-dark border-bottom border-body navbar-expand-md sticky-top" data-bs-theme="dark">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="{{ route('guest.home') }}">
             <div class="logo">
