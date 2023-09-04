@@ -13,7 +13,8 @@ class VideogameController extends Controller
      */
     public function index()
     {
-        //
+        $videogames = Videogame::all();
+        return view('admin.videogames.index', compact('videogame'));
     }
 
     /**
@@ -21,7 +22,7 @@ class VideogameController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.videogames.create');
     }
 
     /**
@@ -37,7 +38,7 @@ class VideogameController extends Controller
      */
     public function show(Videogame $videogame)
     {
-        //
+        return view('admin.videogames.show', compact('videogame'));
     }
 
     /**
@@ -45,7 +46,7 @@ class VideogameController extends Controller
      */
     public function edit(Videogame $videogame)
     {
-        //
+        return view('admin.videogames.edit', compact('videogame'));
     }
 
     /**
