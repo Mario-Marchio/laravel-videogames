@@ -34,7 +34,7 @@ class VideogameController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'image' => 'nullable|Url:https',
             'release_year' => 'nullable|date',
             'rate' => 'nullable|numeric|between:0,5',
         ]);
@@ -67,7 +67,7 @@ class VideogameController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'image' => 'nullable|Url:https',
             'release_year' => 'nullable|date',
             'rate' => 'nullable|numeric|between:0,5',
         ]);
