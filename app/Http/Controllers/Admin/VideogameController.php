@@ -82,6 +82,8 @@ class VideogameController extends Controller
      */
     public function destroy(Videogame $videogame)
     {
-        //
+        $videogame->delete();
+
+        return redirect()->route('admin.videogames.index')->with('success', 'Videogame eliminato con successo!');
     }
 }
