@@ -32,6 +32,7 @@
                     </td>
                 </tr>
 
+                {{-- MODAL --}}
                 <div class="modal fade" id="modal-{{ $videogame->id }}" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
