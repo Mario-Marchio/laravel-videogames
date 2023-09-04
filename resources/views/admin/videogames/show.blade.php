@@ -9,11 +9,11 @@
     <span><strong>Last Update : </strong>{{ $videogame->updated_at }}</span>
   </div>
   <div class="d-flex justify-content-end mt-3">
-    <a class="btn btn-warning mx-3" href="{{ route('admin.videogames.edit', $videogame) }}">Modifica</a>
+    <a class="btn btn-warning mx-3" href="{{ route('admin.videogames.edit', $videogame) }}">Edit</a>
     <form action="{{ route('admin.videogames.destroy', $videogame) }}" method="POST">
       @csrf
       @method('DELETE')
-      <button class="btn btn-danger">Cancella</button>
+      <button class="btn btn-danger">Delete</button>
     </form>
   </div>
 @endsection
