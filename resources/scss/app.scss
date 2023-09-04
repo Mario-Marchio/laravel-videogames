@@ -1,1 +1,8 @@
-@import '~bootstrap/scss/bootstrap'
+// Bootstrap
+@use '~bootstrap/scss/bootstrap' as *;
+
+//Utils
+@use 'utils/mixin' as *;
+
+// Main Layout
+@use 'navbar' as *;
