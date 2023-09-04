@@ -20,4 +20,11 @@
             @endforeach
         </div>
     </section>
+
+    {{-- Pagination --}}
+    <div class="mt-4">
+        @if ($videogames->hasPages())
+            {{ $videogames->links() }}
+        @endif
+    </div>
 @endsection
