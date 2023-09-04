@@ -4,3 +4,9 @@
     justify-content: $justify-content;
     align-items: $align-items;
 }
+
+@mixin font($weight: inherit, $color:  inherit, $text-transform: none ){
+    font-weight: $weight;
+    color: $color;
+    text-transform: $text-transform;
+}

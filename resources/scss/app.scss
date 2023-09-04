@@ -3,6 +3,18 @@
 
 //Utils
 @use 'utils/mixin' as *;
+@use 'utils/vars' as *;
 
 // Main Layout
 @use 'navbar' as *;
+
+// Videogames/Guest
+@use 'videogames/guest/index.scss' as *;
+@use 'videogames/guest/show.scss' as *;
+
+
+// Generics
+a{
+    text-decoration: none;
+    color: inherit;
+}
