@@ -13,7 +13,7 @@ class VideogameController extends Controller
      */
     public function index()
     {
-        $videogames = Videogame::all();
+        $videogames = Videogame::paginate(5);
         return view('admin.videogames.index', compact('videogames'));
     }
 
