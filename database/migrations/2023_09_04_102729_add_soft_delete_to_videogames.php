@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('videogames', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('image')->nullable();
-            $table->date('release_year')->nullable();
-            $table->float('rate', 3, 2);
-            $table->timestamps();
+        Schema::table('videogames', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('videogames');
+        Schema::table('videogames', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };
