@@ -27,6 +27,14 @@
         @include('includes.layout.navbar')
 
         <main class="container">
+            <div class="mt-2">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            </div>
+
             @yield('content')
         </main>
     </div>
