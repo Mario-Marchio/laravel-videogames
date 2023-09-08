@@ -25,7 +25,9 @@
                             dicta itaque! Hic laboriosam quis culpa vel perferendis sunt laborum, consequatur quod labore,
                             autem non, dolore voluptatem excepturi voluptas.</p>
                         <div>
-                            <strong>Release date : </strong>{{ $videogame->release_year }}
+                            <div><strong>Release date : </strong>{{ $videogame->release_year }}</div>
+                            <div><strong>Genre : </strong> {{ $videogame->genre ? $videogame->genre->label : 'Undefined' }}
+                            </div>
                         </div>
 
                     </div>

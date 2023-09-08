@@ -4,6 +4,7 @@
     <h1 class="mt-2">{{ $videogame->title }}</h1>
     <img src="{{ $videogame->image }}" alt="{{ $videogame->title }}">
     <p><strong>Release date :</strong> {{ $videogame->release_year }}</p>
+    <p><strong>Genre :</strong> {{ $videogame->genre ? $videogame->genre->label : 'Undefined' }}</p>
     <div class="d-flex flex-column">
         <span><strong>Created : </strong>{{ $videogame->created_at }}</span>
         <span><strong>Last Update : </strong>{{ $videogame->updated_at }}</span>
