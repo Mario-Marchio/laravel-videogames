@@ -23,12 +23,12 @@
                     {{-- Modifica editori --}}
                     <li class="nav-item">
                         <a class="nav-link @if (request()->routeIs('admin.publisher' . '*')) active @endif"
-                            href="{{ route('admin.publisher.index') }}">{{ __('Update Publisher') }}</a>
+                            href="{{ route('admin.publishers.index') }}">{{ __('Update Publisher') }}</a>
                     </li>
                     {{-- Modifica console --}}
                     <li class="nav-item">
                         <a class="nav-link @if (request()->routeIs('admin.console' . '*')) active @endif"
-                            href="{{ route('admin.console.index') }}">{{ __('Update Console') }}</a>
+                            href="{{ route('admin.consoles.index') }}">{{ __('Update Console') }}</a>
                     </li>
                 @endauth
                 <li class="nav-item">
