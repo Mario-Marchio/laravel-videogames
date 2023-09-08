@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Developer;
 use Illuminate\Http\Request;
 
 class DeveloperController extends Controller
@@ -11,7 +13,8 @@ class DeveloperController extends Controller
      */
     public function index()
     {
-        //
+        $developers = Developer::all();
+        return view('admin.developers.index', compact('developers'));
     }
 
     /**
@@ -19,7 +22,8 @@ class DeveloperController extends Controller
      */
     public function create()
     {
-        //
+        $new_developer = new Developer();
+        return view('admin.developers.create', compact('new_developer'));
     }
 
     /**
@@ -27,7 +31,15 @@ class DeveloperController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'label' => 'required|string|max:255',
+            'year_production' => 'nullable|date',
+            'location' => 'nullable|string|max:255',
+        ]);
+
+        Developer::create($data);
+
+        return redirect()->route('admin.developers.index')->with('success', 'developer created successfully.');
     }
 
     /**
@@ -35,7 +47,7 @@ class DeveloperController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('admin.developers.show', compact('developer'));
     }
 
     /**
@@ -43,7 +55,8 @@ class DeveloperController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $developer = Developer::findOrFail($id);
+        return view('admin.developers.edit', compact('developer'));
     }
 
     /**
@@ -51,7 +64,16 @@ class DeveloperController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'label' => 'required|string|max:255',
+            'year_production' => 'nullable|date',
+            'location' => 'nullable|string|max:255',
+        ]);
+
+        $developer = Developer::findOrFail($id);
+        $developer->update($data);
+
+        return redirect()->route('admin.developers.index')->with('success', 'Developer successfully updated.');
     }
 
     /**
@@ -59,6 +81,9 @@ class DeveloperController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $developer = Developer::findOrFail($id);
+        $developer->delete();
+
+        return redirect()->route('admin.developers.index')->with('success', 'Developer successfully deleted.');
     }
 }
