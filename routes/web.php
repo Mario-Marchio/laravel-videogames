@@ -36,10 +36,10 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::put('/videogames/{videogame}/restore', [AdminVideogameController::class, 'restore'])->name('videogames.restore');
 
     // Publisher
-    Route::resource('publisher', AdminPublisherController::class);
+    Route::resource('publishers', AdminPublisherController::class);
 
     // Console
-    Route::resource('publisher', AdminConsoleController::class);
+    Route::resource('consoles', AdminConsoleController::class);
 });
 
 // Rotte guest
