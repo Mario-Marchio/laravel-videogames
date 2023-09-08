@@ -25,19 +25,49 @@
                         <td>{{ $publisher->email }}</td>
                         <td>{{ $publisher->website }}</td>
                         <td>
-                            <div class="d-flex gap-2">
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                                {{-- to show --}}
                                 <a class="btn btn-success"
                                     href="{{ route('admin.publishers.show', $publisher) }}">Details</a>
+                                {{-- to edit --}}
                                 <a href="{{ route('admin.publishers.edit', $publisher) }}" class="btn btn-warning">Edit</a>
-                                <button class="btn btn-danger">
-                                    Delete
-
-                            </div></button>
+                                {{-- delete form --}}
+                                <form id="delete-form-{{ $publisher->id }}" class="delete-form mb-0"
+                                    action="{{ route('admin.publishers.destroy', $publisher) }}" method="POST"
+                                    data-bs-toggle="modal" data-bs-target="#modal">
+                                    @csrf
+                                    @method('DELETE')
+                                    {{-- delete button --}}
+                                    <button form="delete-form-{{ $publisher->id }}" type="submit"
+                                        class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
+                @empty
+                    There are no Pulishers
+                @endforelse
             </tbody>
-        @empty
-            @endforelse
         </table>
     </div>
-@endsection
+
+    {{-- MODAL --}}
+    <div class="modal fade" id="modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Delete Publisher</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this Publisher?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="confirmation-button btn btn-danger">Confirm Delete</button>
+                </div>
+            </div>
+        </div>
+    @endsection
+
+    <script defer src={{ Vite::asset('resources/js/admin/confirm-delete.js') }}></script>
