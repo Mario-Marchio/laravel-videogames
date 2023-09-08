@@ -13,7 +13,7 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        $publisher = Publisher::all();
+        $publishers = Publisher::all();
         return view('admin.publishers.index', compact('publishers'));
     }
 
