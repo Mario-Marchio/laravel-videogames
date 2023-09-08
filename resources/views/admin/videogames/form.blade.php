@@ -2,11 +2,11 @@
 
     <div x-data="{
         imagePreview: '{{ old('image', $videogame->image) }}'
-    }">
+    }" class="row">
         @csrf
 
         {{-- TITLE --}}
-        <div class="col-12">
+        <div class="col-8">
             <label for="title">Title</label>
             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
                 value="{{ old('title', $videogame->title) }}">
@@ -15,6 +15,17 @@
                     {{ $message }}
                 </div>
             @enderror
+        </div>
+
+        <div class="col-4">
+            <label for="publisher">Select a publisher</label>
+            <select name="publisher_id" id="publisher" class="form-select">
+                <option value="">Select a Publisher</option>
+                @forelse ($publishers as $publisher)
+                    <option value="{{ $publisher->id }}" @if (old('publisher_id', $videogame->publisher_id) == $publisher->id) selected @endif>
+                        {{ $publisher->name }}</option>
+                @endforeach
+            </select>
         </div>
 
         {{-- IMAGE --}}

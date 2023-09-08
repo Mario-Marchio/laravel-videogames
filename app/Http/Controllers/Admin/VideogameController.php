@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Videogame;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Publisher;
 
 class VideogameController extends Controller
 {
@@ -23,7 +24,8 @@ class VideogameController extends Controller
     public function create()
     {
         $videogame = new Videogame();
-        return view('admin.videogames.create', compact('videogame'));
+        $publishers = Publisher::select('id', 'name');
+        return view('admin.videogames.create', compact('videogame', 'publishers'));
     }
 
     /**
@@ -33,6 +35,7 @@ class VideogameController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
+            'publisher_id' => 'nullable|exists:publishers,id',
             'image' => 'nullable|Url:https',
             'release_year' => 'nullable|date',
             'rate' => 'nullable|numeric|between:0,5',
@@ -60,7 +63,8 @@ class VideogameController extends Controller
      */
     public function edit(Videogame $videogame)
     {
-        return view('admin.videogames.edit', compact('videogame'));
+        $publishers = Publisher::select('id', 'name')->get();
+        return view('admin.videogames.edit', compact('videogame', 'publishers'));
     }
 
     /**
@@ -70,6 +74,7 @@ class VideogameController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
+            'publisher_id' => 'nullable|exists:publishers,id',
             'image' => 'nullable|Url:https',
             'release_year' => 'nullable|date',
             'rate' => 'nullable|numeric|between:0,5',

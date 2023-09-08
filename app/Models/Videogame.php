@@ -11,7 +11,7 @@ class Videogame extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['title', 'image', 'release_year', 'rate'];
+    protected $fillable = ['title', 'publisher_id', 'image', 'release_year', 'rate'];
 
     public function publisher()
     {
