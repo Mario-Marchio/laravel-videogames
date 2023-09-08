@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Console;
+use App\Models\Publisher;
+use Illuminate\Http\Request;
 
-
-class ConsoleController extends Controller
+class PublisherController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $publishers = Publisher::all();
+        return view('admin.publishers.index', compact('publishers'));
     }
 
     /**
@@ -22,7 +22,8 @@ class ConsoleController extends Controller
      */
     public function create()
     {
-        //
+        $new_publisher = new Publisher();
+        return view('admin.publishers.create', compact('new_publisher'));
     }
 
     /**
@@ -30,15 +31,15 @@ class ConsoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //todo
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Publisher $publisher)
     {
-        //
+        return view('admin.publisher.show', compact($publisher));
     }
 
     /**
@@ -46,7 +47,7 @@ class ConsoleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //todo
     }
 
     /**
@@ -54,7 +55,7 @@ class ConsoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //todo
     }
 
     /**
@@ -62,6 +63,6 @@ class ConsoleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //todo
     }
 }
