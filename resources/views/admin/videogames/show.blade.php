@@ -7,6 +7,7 @@
         <p class="mt-3"><strong>Publisher : </strong>{{ $videogame->publisher->name }}</p>
     @endif
     <p><strong>Release date :</strong> {{ $videogame->release_year }}</p>
+    <p><strong>Genre :</strong> {{ $videogame->genre ? $videogame->genre->label : 'Undefined' }}</p>
     <div class="d-flex flex-column">
         <span><strong>Created : </strong>{{ $videogame->created_at }}</span>
         <span><strong>Last Update : </strong>{{ $videogame->updated_at }}</span>
