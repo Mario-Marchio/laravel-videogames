@@ -1,10 +1,17 @@
 <?php
 
+// Home
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
-use App\Http\Controllers\ProfileController;
+// Videogame
 use App\Http\Controllers\Guest\VideogameController as GuestVideogameController;
 use App\Http\Controllers\Admin\VideogameController as AdminVideogameController;
+// Publisher
+use App\Http\Controllers\Admin\PublisherController as AdminPublisherController;
+// Console
+use App\Http\Controllers\Admin\ConsoleController as AdminConsoleController;
+
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +29,17 @@ use Illuminate\Support\Facades\Route;
 // Rotte admin
 Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+
+    // Videogames
     Route::get('/videogames/trash', [AdminVideogameController::class, 'trash'])->name('videogames.trash');
     Route::resource('videogames', AdminVideogameController::class);
     Route::put('/videogames/{videogame}/restore', [AdminVideogameController::class, 'restore'])->name('videogames.restore');
+
+    // Publisher
+    Route::resource('publisher', AdminPublisherController::class);
+
+    // Console
+    Route::resource('publisher', AdminConsoleController::class);
 });
 
 // Rotte guest
@@ -39,5 +54,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 require __DIR__ . '/auth.php';
