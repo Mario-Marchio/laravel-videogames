@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Publisher extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'email', 'website'];
+
+    public function videogames()
+    {
+        return $this->hasMany(Videogame::class);
+    }
 }
