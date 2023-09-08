@@ -25,10 +25,14 @@
                         <td>{{ $publisher->email }}</td>
                         <td>{{ $publisher->website }}</td>
                         <td>
-                            <a href="{{ route('admin.publishers.edit', $publisher) }}" class="btn btn-warning">Edit</a>
-                            <button class="btn btn-danger">
-                                Delete
-                            </button>
+                            <div class="d-flex gap-2">
+                                <a class="btn btn-success"
+                                    href="{{ route('admin.publishers.show', $publisher) }}">Details</a>
+                                <a href="{{ route('admin.publishers.edit', $publisher) }}" class="btn btn-warning">Edit</a>
+                                <button class="btn btn-danger">
+                                    Delete
+
+                            </div></button>
                         </td>
                     </tr>
             </tbody>

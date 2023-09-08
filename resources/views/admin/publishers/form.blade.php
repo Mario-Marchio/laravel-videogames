@@ -1,4 +1,5 @@
 <div class="card p-4">
+    @csrf
 
 
     {{-- NAME --}}
