@@ -9,6 +9,8 @@ class Console extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['label', 'year_production', 'company'];
+
     public function videogames()
     {
         return $this->belongsToMany(Videogame::class);
