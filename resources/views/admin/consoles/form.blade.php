@@ -27,7 +27,8 @@
 
   {{-- BUTTON --}}
   <div class="col-12">
-    <div class="d-flex justify-content-end my-3">
+    <div class="d-flex justify-content-between my-3">
+      <a class="btn btn-secondary" href="{{ route('admin.consoles.index') }}">Back</a>
       <button class="btn btn-primary">Save</button>
     </div>
   </div>
