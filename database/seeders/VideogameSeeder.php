@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Publisher;
 use App\Models\Console;
+use App\Models\Developer;
 use App\Models\Videogame;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -21,10 +22,13 @@ class VideogameSeeder extends Seeder
         // Take all the console from database
         $consoles_id = Console::pluck('id')->toArray();
 
+        $developers_id = Developer::pluck('id')->toArray();
+
 
         for ($i = 1; $i <= 50; $i++) {
             $videogame = new Videogame();
             $videogame->publisher_id = $publisher_ids[array_rand($publisher_ids)];
+            $videogame->developer_id = $developers_id[array_rand($developers_id)];
             $videogame->title = $faker->words(3, true);
             $videogame->image = $faker->imageUrl(250, 250);
             $videogame->release_year = $faker->dateTimeBetween('-10 years');
