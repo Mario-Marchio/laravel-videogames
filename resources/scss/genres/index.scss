@@ -1,0 +1,11 @@
+@use '../utils/mixin' as *;
+@use '../utils/vars' as *;
+
+//______________________ GENRES
+// INDEX
+#genres-index{
+    h6{
+        text-transform: uppercase;
+        text-align: center;
+    }
+}

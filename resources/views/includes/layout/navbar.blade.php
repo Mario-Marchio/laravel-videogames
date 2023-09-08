@@ -30,6 +30,11 @@
                         <a class="nav-link @if (request()->routeIs('admin.console' . '*')) active @endif"
                             href="{{ route('admin.consoles.index') }}">{{ __('Update Console') }}</a>
                     </li>
+                    {{-- Modifica generi --}}
+                    <li class="nav-item">
+                        <a class="nav-link @if (request()->routeIs('admin.genre' . '*')) active @endif"
+                            href="{{ route('admin.genres.index') }}">{{ __('Update Genre') }}</a>
+                    </li>
                 @endauth
                 <li class="nav-item">
                     <a class="nav-link @if (request()->routeIs('guest.videogames' . '*')) active @endif"

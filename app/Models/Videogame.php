@@ -22,4 +22,9 @@ class Videogame extends Model
     {
         return $this->belongsToMany(Console::class);
     }
+
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
+    }
 }
