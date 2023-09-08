@@ -39,7 +39,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::resource('publisher', AdminPublisherController::class);
 
     // Console
-    Route::resource('publisher', AdminConsoleController::class);
+    Route::resource('consoles', AdminConsoleController::class);
 });
 
 // Rotte guest
