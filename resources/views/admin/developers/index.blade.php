@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Elenco Sviluppatori</h1>
+        <h1>Developer List</h1>
 
 
         @if (session('success'))
@@ -19,8 +19,8 @@
             <thead>
                 <tr>
                     <th>developer</th>
-                    <th>Anno Produzione</th>
-                    <th>Località</th>
+                    <th>Production Year</th>
+                    <th>Location</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +35,8 @@
                             <form action="{{ route('admin.developers.destroy', $developer->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button form="delete-form-{{ $publisher->id }}" type="submit"
+                                    class="btn btn-danger">Delete</button>
                             </form>
                         </td>
                     </tr>
