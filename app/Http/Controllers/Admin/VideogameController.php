@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Videogame;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Console;
 use App\Models\Publisher;
 
 class VideogameController extends Controller
@@ -24,8 +25,9 @@ class VideogameController extends Controller
     public function create()
     {
         $videogame = new Videogame();
-        $publishers = Publisher::select('id', 'name');
-        return view('admin.videogames.create', compact('videogame', 'publishers'));
+        $publishers = Publisher::select('id', 'name')->get();
+        $consoles = Console::all();
+        return view('admin.videogames.create', compact('videogame', 'publishers', 'consoles'));
     }
 
     /**
@@ -39,9 +41,14 @@ class VideogameController extends Controller
             'image' => 'nullable|Url:https',
             'release_year' => 'nullable|date',
             'rate' => 'nullable|numeric|between:0,5',
+            'consoles' => 'nullable|exists:consoles,id'
         ]);
 
         $videogame = Videogame::create($validatedData);
+
+        if (array_key_exists('consoles', $validatedData)) {
+            $videogame->consoles()->attach($validatedData['consoles']);
+        }
 
         if ($videogame) {
             return redirect()->route('admin.videogames.show', ['videogame' => $videogame])->with('success', 'Videogame created successfully!');
@@ -64,7 +71,13 @@ class VideogameController extends Controller
     public function edit(Videogame $videogame)
     {
         $publishers = Publisher::select('id', 'name')->get();
-        return view('admin.videogames.edit', compact('videogame', 'publishers'));
+
+        // Take consoles array id relationed with the current project
+        $consoles_videogame_id = $videogame->consoles->pluck('id')->toArray();
+        // Take all console from database
+        $consoles = Console::all();
+
+        return view('admin.videogames.edit', compact('videogame', 'publishers', 'consoles', 'consoles_videogame_id'));
     }
 
     /**
@@ -78,9 +91,16 @@ class VideogameController extends Controller
             'image' => 'nullable|Url:https',
             'release_year' => 'nullable|date',
             'rate' => 'nullable|numeric|between:0,5',
+            'consoles' => 'nullable|exists:consoles,id'
         ]);
 
         $videogame->update($validatedData);
+
+        if (!array_key_exists('consoles', $validatedData) && count($videogame->consoles)) {
+            $videogame->consoles()->detach();
+        } elseif (array_key_exists('consoles', $validatedData)) {
+            $videogame->consoles()->sync($validatedData['consoles']);
+        }
 
         return Redirect()->route('admin.videogames.show', ['videogame' => $videogame])->with('success', 'Videogame updated successfully!');
     }
