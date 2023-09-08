@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PublisherRequest;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
 use JetBrains\PhpStorm\Pure;
@@ -30,9 +31,12 @@ class PublisherController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PublisherRequest $request)
     {
-        //todo
+        $data = $request->all();
+        $publisher = Publisher::create($data);
+
+        return to_route('admin.publishers.show', $publisher);
     }
 
     /**
@@ -40,7 +44,7 @@ class PublisherController extends Controller
      */
     public function show(Publisher $publisher)
     {
-        return view('admin.publisher.show', compact('publisher'));
+        return view('admin.publishers.show', compact('publisher'));
     }
 
     /**
@@ -54,9 +58,9 @@ class PublisherController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PublisherRequest $request, string $id)
     {
-        //todo
+        $data = $request->all();
     }
 
     /**
