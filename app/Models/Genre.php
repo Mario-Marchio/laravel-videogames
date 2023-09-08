@@ -9,6 +9,8 @@ class Genre extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['label'];
+
     public function videogames()
     {
         return $this->hasMany(Videogame::class);

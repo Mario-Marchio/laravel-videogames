@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
 class GenreController extends Controller
@@ -12,7 +13,8 @@ class GenreController extends Controller
      */
     public function index()
     {
-        return view('admin.genres.index');
+        $genres = Genre::all();
+        return view('admin.genres.index', compact('genres'));
     }
 
     /**
@@ -20,7 +22,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.genres.create');
     }
 
     /**
@@ -28,7 +30,19 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation
+        $request->validate(
+            [
+                'label' => 'required|string|max:20|unique:genres',
+                'color' => 'nullable|unique:genres',
+            ]
+        );
+
+        $data = $request->all();
+        $genre = new Genre();
+        $genre->fill($data);
+        $genre->save();
+        return to_route('admin.genres.index')->with('success', 'Videogame created successfully!');
     }
 
     /**
@@ -42,9 +56,9 @@ class GenreController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Genre $genre)
     {
-        //
+        return view('admin.genres.edit', compact('genre'));
     }
 
     /**
@@ -58,8 +72,10 @@ class GenreController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Genre $genre)
     {
-        //
+        $genre->delete();
+
+        return to_route('admin.genres.index')->with('success', 'Genre deleted successfully!');
     }
 }

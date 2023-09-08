@@ -18,7 +18,14 @@
             @foreach ($videogames as $videogame)
                 <tr>
                     <th>{{ $videogame->title }}</th>
-                    <td>{{ $videogame->genre?->label }}</td>
+                    <td>
+                        @if ($videogame->genre)
+                            <span class="badge rounded-pill"
+                                style="background-color: {{ $videogame->genre->color }}">{{ $videogame->genre->label }}</span>
+                        @else
+                            <span>-</span>
+                        @endif
+                    </td>
                     <td>{{ $videogame->created_at }}</td>
                     <td>{{ $videogame->updated_at }}</td>
                     <td>

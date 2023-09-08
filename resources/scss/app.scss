@@ -13,9 +13,19 @@
 @use 'videogames/guest/show.scss' as *;
 @use 'videogames/guest/home.scss' as *;
 
+// Genre
+@use 'genres/index.scss' as *;
+@use 'genres/create.scss' as *;
 
 // Generics
 a{
     text-decoration: none;
     color: inherit;
+}
+
+.go-back{
+    @include font(500, white);
+    padding: 10px;
+    border-radius: 15px;
+    background-color: $primary-color;
 }
