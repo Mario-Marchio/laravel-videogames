@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
+use JetBrains\PhpStorm\Pure;
 
 class PublisherController extends Controller
 {
@@ -22,8 +23,8 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        $new_publisher = new Publisher();
-        return view('admin.publishers.create', compact('new_publisher'));
+        $publisher = new Publisher();
+        return view('admin.publishers.create', compact('publisher'));
     }
 
     /**
@@ -39,15 +40,15 @@ class PublisherController extends Controller
      */
     public function show(Publisher $publisher)
     {
-        return view('admin.publisher.show', compact($publisher));
+        return view('admin.publisher.show', compact('publisher'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Publisher $publisher)
     {
-        //todo
+        return view('admin.publishers.edit', compact('publisher'));
     }
 
     /**
