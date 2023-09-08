@@ -3,6 +3,9 @@
 @section('content')
     <h1 class="mt-2">{{ $videogame->title }}</h1>
     <img src="{{ $videogame->image }}" alt="{{ $videogame->title }}">
+    @if ($videogame->publisher)
+        <p class="mt-3"><strong>Publisher : </strong>{{ $videogame->publisher->name }}</p>
+    @endif
     <p><strong>Release date :</strong> {{ $videogame->release_year }}</p>
     <div class="d-flex flex-column">
         <span><strong>Created : </strong>{{ $videogame->created_at }}</span>
