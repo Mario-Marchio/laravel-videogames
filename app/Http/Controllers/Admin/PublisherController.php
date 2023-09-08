@@ -58,9 +58,12 @@ class PublisherController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(PublisherRequest $request, string $id)
+    public function update(PublisherRequest $request, Publisher $publisher)
     {
         $data = $request->all();
+        $publisher->update($data);
+
+        return to_route('admin.publishers.show', compact('publisher'))->with('success', "$publisher->name updated successfully!");
     }
 
     /**

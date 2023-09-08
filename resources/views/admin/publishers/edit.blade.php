@@ -6,6 +6,7 @@
 
     <div class="my-5">
         <form action="{{ route('admin.publishers.update', $publisher) }}" method="POST">
+            @method('put')
             @include('admin.publishers.form')
         </form>
     </div>
