@@ -14,14 +14,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                <li class="nav-item ">
-                    <a class="nav-link @if (request()->routeIs('guest.home' . '*')) active @endif"
-                        href="{{ route('guest.home') }}">{{ __('Home') }}</a>
-                </li>
                 @auth
+                    {{-- Modifica videogames --}}
                     <li class="nav-item">
                         <a class="nav-link @if (request()->routeIs('admin.videogames' . '*')) active @endif"
                             href="{{ route('admin.videogames.index') }}">{{ __('Update Videogames') }}</a>
+                    </li>
+                    {{-- Modifica editori --}}
+                    <li class="nav-item">
+                        <a class="nav-link @if (request()->routeIs('admin.publisher' . '*')) active @endif"
+                            href="{{ route('admin.publisher.index') }}">{{ __('Update Publisher') }}</a>
+                    </li>
+                    {{-- Modifica console --}}
+                    <li class="nav-item">
+                        <a class="nav-link @if (request()->routeIs('admin.console' . '*')) active @endif"
+                            href="{{ route('admin.console.index') }}">{{ __('Update Console') }}</a>
                     </li>
                 @endauth
                 <li class="nav-item">
