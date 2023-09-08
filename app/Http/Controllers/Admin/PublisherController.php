@@ -69,8 +69,16 @@ class PublisherController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Publisher $publisher)
     {
-        //todo
+        // Check if publisher has videogames, if it has videogames attached return an error.
+        if (count($publisher->videogames))
+            return to_route('admin.publishers.show', $publisher)
+                ->withErrors("Cannot delete $publisher->name,
+                The publisher has " . count($publisher->videogames) . " active videogames.");
+
+        $publisher->delete();
+
+        return to_route('admin.publishers.index')->with('success', "$publisher->name deleted successfully!");
     }
 }
