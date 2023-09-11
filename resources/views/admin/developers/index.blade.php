@@ -32,11 +32,11 @@
                         <td>
                             <a href="{{ route('admin.developers.show', $developer->id) }}" class="btn btn-info">Details</a>
                             <a href="{{ route('admin.developers.edit', $developer->id) }}" class="btn btn-primary">Edit</a>
+
                             <form action="{{ route('admin.developers.destroy', $developer->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button form="delete-form-{{ $publisher->id }}" type="submit"
-                                    class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
                     </tr>

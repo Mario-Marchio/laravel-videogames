@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\VideogameController as AdminVideogameController;
 use App\Http\Controllers\Admin\PublisherController as AdminPublisherController;
 // Console
 use App\Http\Controllers\Admin\ConsoleController as AdminConsoleController;
+// Developer
+use App\Http\Controllers\Admin\DeveloperController as AdminDeveloperController;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +42,9 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
 
     // Console
     Route::resource('consoles', AdminConsoleController::class);
+
+    //Developer
+    Route::resource('developers', AdminDeveloperController::class);
 });
 
 // Rotte guest

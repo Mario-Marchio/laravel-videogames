@@ -33,7 +33,7 @@ class DeveloperController extends Controller
     {
         $data = $request->validate([
             'label' => 'required|string|max:255',
-            'year_production' => 'nullable|date',
+            'year_production' => 'nullable|integer',
             'location' => 'nullable|string|max:255',
         ]);
 
@@ -45,7 +45,7 @@ class DeveloperController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Developer $developer)
     {
         return view('admin.developers.show', compact('developer'));
     }
@@ -66,7 +66,7 @@ class DeveloperController extends Controller
     {
         $data = $request->validate([
             'label' => 'required|string|max:255',
-            'year_production' => 'nullable|date',
+            'year_production' => 'nullable|integer',
             'location' => 'nullable|string|max:255',
         ]);
 
